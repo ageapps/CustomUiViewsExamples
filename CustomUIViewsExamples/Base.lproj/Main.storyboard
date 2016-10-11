@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomUIViewsExamples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,95 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-Vm-Cyh">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAO-v3-dnZ" customClass="WaveView" customModule="CustomUIViewsExamples" customModuleProvider="target">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="152" id="GwO-PL-ZfU"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOj-Zj-tNR">
+                                        <state key="normal" title="Frequency"/>
+                                        <connections>
+                                            <action selector="toggleWaveMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BbI-Va-NCm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dy2-KJ-JjL">
+                                        <state key="normal" title="Opacity"/>
+                                        <connections>
+                                            <action selector="toggleSquareMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KbP-qe-heu"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="S5h-kV-rvo">
+                                        <connections>
+                                            <action selector="waveSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="buW-XS-tBD"/>
+                                        </connections>
+                                    </slider>
+                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-hY-k3d" customClass="SquareView" customModule="CustomUIViewsExamples" customModuleProvider="target">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="174" id="FWC-tb-d2R"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="pressed" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="centerView" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cuh-4b-SeW">
+                                        <connections>
+                                            <action selector="SquareSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3Tf-sx-OUC"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cuh-4b-SeW" firstAttribute="trailing" secondItem="cOj-Zj-tNR" secondAttribute="trailing" id="4OC-mn-sbq"/>
+                                    <constraint firstItem="S5h-kV-rvo" firstAttribute="top" secondItem="cOj-Zj-tNR" secondAttribute="bottom" constant="14" id="6XW-fa-Clu"/>
+                                    <constraint firstItem="Nea-hY-k3d" firstAttribute="leading" secondItem="hWl-Vm-Cyh" secondAttribute="leading" id="8N7-NU-PDh"/>
+                                    <constraint firstItem="dy2-KJ-JjL" firstAttribute="leading" secondItem="cuh-4b-SeW" secondAttribute="leading" id="Amv-3Z-SkM"/>
+                                    <constraint firstItem="Nea-hY-k3d" firstAttribute="leading" secondItem="CAO-v3-dnZ" secondAttribute="leading" id="F3J-ZW-ZEV"/>
+                                    <constraint firstItem="Nea-hY-k3d" firstAttribute="top" secondItem="hWl-Vm-Cyh" secondAttribute="top" id="GAT-SV-BED"/>
+                                    <constraint firstAttribute="bottom" secondItem="S5h-kV-rvo" secondAttribute="bottom" constant="79" id="Ml4-wj-z5W"/>
+                                    <constraint firstItem="cOj-Zj-tNR" firstAttribute="leading" secondItem="S5h-kV-rvo" secondAttribute="leading" id="OI8-ch-mT9"/>
+                                    <constraint firstItem="cuh-4b-SeW" firstAttribute="leading" secondItem="cOj-Zj-tNR" secondAttribute="leading" id="QYX-N3-3bA"/>
+                                    <constraint firstItem="CAO-v3-dnZ" firstAttribute="centerX" secondItem="cOj-Zj-tNR" secondAttribute="centerX" id="Xdb-Sh-4gJ"/>
+                                    <constraint firstItem="cuh-4b-SeW" firstAttribute="top" secondItem="dy2-KJ-JjL" secondAttribute="bottom" constant="8" symbolic="YES" id="f56-pp-so4"/>
+                                    <constraint firstItem="CAO-v3-dnZ" firstAttribute="top" secondItem="cuh-4b-SeW" secondAttribute="bottom" constant="70" id="f5m-G4-W2q"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nea-hY-k3d" secondAttribute="trailing" id="fNt-CT-nxK"/>
+                                    <constraint firstItem="cOj-Zj-tNR" firstAttribute="top" secondItem="CAO-v3-dnZ" secondAttribute="bottom" constant="17" id="fPy-Xq-ipH"/>
+                                    <constraint firstItem="cOj-Zj-tNR" firstAttribute="trailing" secondItem="S5h-kV-rvo" secondAttribute="trailing" id="rY9-Ju-XGu"/>
+                                    <constraint firstItem="dy2-KJ-JjL" firstAttribute="top" secondItem="Nea-hY-k3d" secondAttribute="bottom" constant="13" id="rtx-Fm-17H"/>
+                                    <constraint firstItem="Nea-hY-k3d" firstAttribute="trailing" secondItem="CAO-v3-dnZ" secondAttribute="trailing" id="tf7-ar-kb1"/>
+                                    <constraint firstItem="dy2-KJ-JjL" firstAttribute="leading" secondItem="hWl-Vm-Cyh" secondAttribute="leading" constant="16" id="ucD-ie-9d2"/>
+                                    <constraint firstItem="dy2-KJ-JjL" firstAttribute="trailing" secondItem="cuh-4b-SeW" secondAttribute="trailing" id="xti-Jm-aCz"/>
+                                    <constraint firstItem="Nea-hY-k3d" firstAttribute="centerX" secondItem="hWl-Vm-Cyh" secondAttribute="centerX" id="yZR-8L-CPi"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hWl-Vm-Cyh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jxc-de-yA4"/>
+                            <constraint firstItem="hWl-Vm-Cyh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="N3b-5o-04N"/>
+                            <constraint firstItem="hWl-Vm-Cyh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NNS-bb-qVd"/>
+                            <constraint firstItem="hWl-Vm-Cyh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="NcH-ki-GbJ"/>
+                            <constraint firstItem="hWl-Vm-Cyh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z0F-94-b86"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mDropDownSquare" destination="dy2-KJ-JjL" id="saG-vP-98l"/>
+                        <outlet property="mDropDownWave" destination="cOj-Zj-tNR" id="gXa-ph-GDr"/>
+                        <outlet property="mSquareSlider" destination="cuh-4b-SeW" id="dnR-hz-BGo"/>
+                        <outlet property="mSquareView" destination="Nea-hY-k3d" id="D4e-qc-5Um"/>
+                        <outlet property="mWaveSlider" destination="S5h-kV-rvo" id="bTr-Lh-iy1"/>
+                        <outlet property="mWaveView" destination="CAO-v3-dnZ" id="SDG-h1-SgZ"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
